@@ -1,44 +1,56 @@
 {
-    "name": "automatizacion-github-para-vagos",
-    "version": "0.0.1",
-    "description": "CLI para vagos",
-    "main": "./bin/automatizacion-vagos.js",
-    "bin": {
-        "automatizacion-vagos": "./bin/automatizacion-vagos.js"
+  "name": "automatizacion-github-para-vagos",
+  "version": "0.0.1",
+  "description": "CLI para vagos",
+  "main": "./bin/automatizacion-vagos.js",
+  "bin": {
+    "automatizacion-vagos": "./bin/automatizacion-vagos.js"
+  },
+  "scripts": {
+    "build": "babel -d build/ src/",
+    "lint": "gulp lint",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ULL-ESIT-SYTW-1617/proyecto-sytw-16-17-aitor-joshua-samuel.git"
+  },
+  "keywords": [
+    "CLI",
+    "Vagos",
+    "Github",
+    "Octonode",
+    "babel",
+    "ES2015"
+  ],
+  "contributors": [
+    {
+      "name": "Aitor Bernal Falcon"
     },
-    "scripts": {
-        "build": "babel -d build/ src/",
-        "lint": "gulp lint",
-        "test": "echo \"Error: no test specified\" && exit 1"
+    {
+      "name": "Samuel Ramos Barroso"
     },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/ULL-ESIT-SYTW-1617/proyecto-sytw-16-17-aitor-joshua-samuel.git"
-    },
-    "keywords": [
-        "CLI",
-        "Vagos",
-        "Github",
-        "Octonode",
-        "babel",
-        "ES2015"
-    ],
-    "contributors": [{
-        "name": "Aitor Bernal Falcon"
-    }, {
-        "name": "Samuel Ramos Barroso"
-    }, {
-        "name": "Joshua Perez Garcia"
-    }],
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/ULL-ESIT-SYTW-1617/proyecto-sytw-16-17-aitor-joshua-samuel/issues"
-    },
-    "homepage": "https://github.com/ULL-ESIT-SYTW-1617/proyecto-sytw-16-17-aitor-joshua-samuel#readme",
-    "devDependencies": {
-        "babel-cli": "^6.18.0",
-        "babel-polyfill": "^6.20.0",
-        "babel-preset-es2015": "^6.18.0",
-        "babel-preset-stage-0": "^6.16.0"
+    {
+      "name": "Joshua Perez Garcia"
     }
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ULL-ESIT-SYTW-1617/proyecto-sytw-16-17-aitor-joshua-samuel/issues"
+  },
+  "homepage": "https://github.com/ULL-ESIT-SYTW-1617/proyecto-sytw-16-17-aitor-joshua-samuel#readme",
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.20.0",
+    "babel-polyfill": "^6.20.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2"
+  },
+  "dependencies": {
+    "commander": "^2.9.0",
+    "inquirer": "^2.0.0",
+    "octonode": "^0.7.7"
+  }
 }
