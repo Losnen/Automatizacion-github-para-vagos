@@ -12,9 +12,9 @@ if (argv.i | argv.init) {
 
     build.repo(argv);
 
-} else if (argv.b | argv.borrar) {
+} else if (argv.b) {
 
-  
+    build.borrar(argv.b);
 
 } else {
 

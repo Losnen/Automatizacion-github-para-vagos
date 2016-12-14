@@ -24,10 +24,11 @@ function createToken(data) {
             username: data.usr,
             password: data.passwd
         }).login({
-            scopes: ['user', 'repo'],
+            scopes: ['user', 'repo', 'admin:public_key', 'notifications', 'delete_repo', 'gist'],
             note: 'automatizacion-para-vagos'
         }, (err, id, token) => {
             if (err) {
+                console.log(err);
                 reject(err);
             } else {
                 resolve(token);
