@@ -1,17 +1,23 @@
 #!/usr/bin/env node
 
 const build = require('../build');
-const program = require('commander');
+const argv = require('minimist')(process.argv.slice(2));
 
-program
-    .version('0.0.1')
-    .usage('[options]')
-    .option('-i, --init', 'Inicializa el github token')
-    .option('-r, --repo [nombre]', 'Crea un repositorio en github [mi-repo-de-vagos]', 'mi-repo-de-vagos')
-    .parse(process.argv);
 
-if (program.init) {
+if (argv.i | argv.init) {
+
     build.init();
-} else if (program.repo) {
-    console.log(program.repo)
+
+} else if (argv.r) {
+
+    build.repo(argv);
+
+} else if (argv.b | argv.borrar) {
+
+  
+
+} else {
+
+  console.log('Opción inválida, introduca automatizacion-vagos -h para ver los comandos válidos');
+
 }

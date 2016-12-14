@@ -1,6 +1,6 @@
 {
   "name": "automatizacion-github-para-vagos",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "CLI para vagos",
   "main": "./bin/automatizacion-vagos.js",
   "bin": {
@@ -49,8 +49,10 @@
     "gulp-babel": "^6.1.2"
   },
   "dependencies": {
-    "commander": "^2.9.0",
+    "babel-polyfill": "^6.20.0",
     "inquirer": "^2.0.0",
-    "octonode": "^0.7.7"
+    "minimist": "^1.2.0",
+    "octonode": "^0.7.7",
+    "simple-git": "^1.65.0"
   }
 }
