@@ -2,9 +2,11 @@ import "babel-polyfill";
 import github from 'octonode';
 import inquirer from 'inquirer';
 import fs from 'fs';
-import { readToken } from './codigo';
+import {
+    readToken
+} from './codigo';
 
-const borrar = async (repo) => {
+const gist = async(file) => {
 
     if (!fs.existsSync(process.env.HOME + '/.automatizacion-para-vagos/token.json')) {
         console.log(' ');
@@ -14,21 +16,31 @@ const borrar = async (repo) => {
         console.log(' ');
     } else {
         let token = readToken();
-        await borrarRepo(repo,token);
+        await crearGist(file,token);
     }
 }
 
-function borrarRepo(repo,token) {
+function crearGist(file,token) {
+
+    let contenido = fs.readFileSync('./gist/' + file,"utf8");
 
     return new Promise((resolve, reject) => {
 
         let client = github.client(token);
-        let ghrepo = client.repo(repo);
-        ghrepo.destroy((err) => {
-          console.log(err);
-        });
+        let ghgist = client.gist();
 
+        ghgist.create({
+            description: "Gist by automatizacion-vagos",
+            public: true,
+            files: {
+                fichero: {
+                    "filename": file,
+                    "content": contenido
+                }
+            }
+        }, (err) => {
+        });
     });
 }
 
-export { borrar };
+export { gist };

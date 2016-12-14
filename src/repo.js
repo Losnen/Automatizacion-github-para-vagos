@@ -7,8 +7,11 @@ import { readToken } from './codigo';
 const repo = async (datos) => {
 
     if (!fs.existsSync(process.env.HOME + '/.automatizacion-para-vagos/token.json')) {
-        console.log('Todavía no ha generado su token, primero ejecute automatizacion-vagos -i | --init');
-    } else {
+      console.log(' ');
+      console.log('Todavía no ha generado su token, primero ejecute automatizacion-vagos -i | --init');
+      console.log(' ');
+      console.log('Para mas información, ejecute automatizacion-vagos -h');
+      console.log(' ');    } else {
         let token = readToken();
         await createRepo(datos, token);
     }

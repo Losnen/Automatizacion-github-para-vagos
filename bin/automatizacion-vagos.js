@@ -16,8 +16,13 @@ if (argv.i | argv.init) {
 
     build.borrar(argv.b);
 
+} else if (argv.g) {
+
+    build.gist(argv.g);
+    console.log("Gist Creado con éxito");
+
 } else {
 
-  console.log('Opción inválida, introduca automatizacion-vagos -h para ver los comandos válidos');
+    console.log('Opción inválida, introduca automatizacion-vagos -h para ver los comandos válidos');
 
 }

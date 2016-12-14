@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.repo = undefined;
+exports.borrar = undefined;
 
 require('babel-polyfill');
 
@@ -25,8 +25,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
-var repo = function () {
-    var _ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee(_repo) {
+var borrar = function () {
+    var _ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee(repo) {
         var token;
         return regeneratorRuntime.wrap(function _callee$(_context) {
             while (1) {
@@ -48,7 +48,7 @@ var repo = function () {
                     case 8:
                         token = (0, _codigo.readToken)();
                         _context.next = 11;
-                        return borrarRepo(_repo, token);
+                        return borrarRepo(repo, token);
 
                     case 11:
                     case 'end':
@@ -58,19 +58,21 @@ var repo = function () {
         }, _callee, undefined);
     }));
 
-    return function repo(_x) {
+    return function borrar(_x) {
         return _ref.apply(this, arguments);
     };
 }();
 
-function BorrarRepo(repo, token) {
+function borrarRepo(repo, token) {
 
     return new Promise(function (resolve, reject) {
 
         var client = _octonode2.default.client(token);
         var ghrepo = client.repo(repo);
-        ghrepo.destroy();
+        ghrepo.destroy(function (err) {
+            console.log(err);
+        });
     });
 }
 
-exports.repo = repo;
+exports.borrar = borrar;
