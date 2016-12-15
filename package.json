@@ -1,6 +1,6 @@
 {
   "name": "automatizacion-github-para-vagos",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "CLI para vagos",
   "main": "./bin/automatizacion-vagos.js",
   "bin": {
