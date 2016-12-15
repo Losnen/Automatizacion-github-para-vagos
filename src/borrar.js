@@ -2,7 +2,7 @@ import "babel-polyfill";
 import github from 'octonode';
 import inquirer from 'inquirer';
 import fs from 'fs';
-import { readToken } from './codigo';
+import { readToken, getBody } from './codigo';
 
 const borrar = async (repo) => {
 
@@ -14,20 +14,20 @@ const borrar = async (repo) => {
         console.log(' ');
     } else {
         let token = readToken();
-        await borrarRepo(repo,token);
+        let usr = await getBody();
+        await borrarRepo(repo,token,usr);
     }
 }
 
-function borrarRepo(repo,token) {
+function borrarRepo(repo,token,user) {
 
     return new Promise((resolve, reject) => {
-
+        let aux = user.login + '/' + repo;
         let client = github.client(token);
-        let ghrepo = client.repo(repo);
+        let ghrepo = client.repo(aux);
         ghrepo.destroy((err) => {
-          console.log(err);
+          if (err) console.log(err);
         });
-
     });
 }
 

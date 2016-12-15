@@ -4,6 +4,12 @@
 
 ## Instrucciones
 
+* ``` automatizacion-vagos -i ``` Genera el token con los permisos necesarios para usar la herramienta.
+* ``` automatizacion-vagos -r [mi-repo] ``` Crea el repositorio *mi-repo*
+* ``` automatizacion-vagos -b [mi-repo] ``` Borra el repositorio *mi-repo*
+* ``` automatizacion-vagos -g [file.js] ``` Crea el gist con el fichero ```file.js```. Para subir el fichero es necesario crear un directorio ``` gist/ ``` con el fichero ``` file.js ```.
+* ```automatizacion-vagos -h ``` Muestra la ayuda.
+
 ## Ejemplo
 
 ## Autores

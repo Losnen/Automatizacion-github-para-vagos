@@ -27,7 +27,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 var borrar = function () {
     var _ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee(repo) {
-        var token;
+        var token, usr;
         return regeneratorRuntime.wrap(function _callee$(_context) {
             while (1) {
                 switch (_context.prev = _context.next) {
@@ -42,15 +42,20 @@ var borrar = function () {
                         console.log(' ');
                         console.log('Para mas información, ejecute automatizacion-vagos -h');
                         console.log(' ');
-                        _context.next = 11;
+                        _context.next = 14;
                         break;
 
                     case 8:
                         token = (0, _codigo.readToken)();
                         _context.next = 11;
-                        return borrarRepo(repo, token);
+                        return (0, _codigo.getBody)();
 
                     case 11:
+                        usr = _context.sent;
+                        _context.next = 14;
+                        return borrarRepo(repo, token, usr);
+
+                    case 14:
                     case 'end':
                         return _context.stop();
                 }
@@ -63,14 +68,14 @@ var borrar = function () {
     };
 }();
 
-function borrarRepo(repo, token) {
+function borrarRepo(repo, token, user) {
 
     return new Promise(function (resolve, reject) {
-
+        var aux = user.login + '/' + repo;
         var client = _octonode2.default.client(token);
-        var ghrepo = client.repo(repo);
+        var ghrepo = client.repo(aux);
         ghrepo.destroy(function (err) {
-            console.log(err);
+            if (err) console.log(err);
         });
     });
 }

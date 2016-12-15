@@ -1,6 +1,7 @@
 import "babel-polyfill";
 import inquirer from 'inquirer';
 import fs from 'fs';
+import github from 'octonode';
 
 export function readCmdLine() {
 
@@ -23,7 +24,18 @@ export function readCmdLine() {
 
 export function readToken() {
 
-    let file = fs.readFileSync(process.env.HOME + '/.automatizacion-para-vagos/token.json',"utf8");
+    let file = fs.readFileSync(process.env.HOME + '/.automatizacion-para-vagos/token.json', "utf8");
     file = JSON.parse(file);
-    return(file.token);
+    return (file.token);
+}
+
+export function getBody() {
+
+    return new Promise((resolve, reject) => {
+        let token = readToken();
+        let client = github.client(token);
+        client.get('/user', {}, (err, status, body, headers) => {
+            resolve(body);
+        });
+    });
 }

@@ -39,6 +39,7 @@ function crearGist(file,token) {
                 }
             }
         }, (err) => {
+          if (err) console.log(err);
         });
     });
 }

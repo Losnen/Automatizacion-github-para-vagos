@@ -42,7 +42,7 @@ var gist = function () {
                         console.log(' ');
                         console.log('Para mas información, ejecute automatizacion-vagos -h');
                         console.log(' ');
-                        _context.next = 12;
+                        _context.next = 11;
                         break;
 
                     case 8:
@@ -51,9 +51,6 @@ var gist = function () {
                         return crearGist(file, token);
 
                     case 11:
-                        console.log("Gist Creado con éxito");
-
-                    case 12:
                     case 'end':
                         return _context.stop();
                 }
@@ -84,7 +81,9 @@ function crearGist(file, token) {
                     "content": contenido
                 }
             }
-        }, function (err) {});
+        }, function (err) {
+            if (err) console.log(err);
+        });
     });
 }
 
