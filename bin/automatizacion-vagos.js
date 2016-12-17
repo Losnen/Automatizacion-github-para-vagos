@@ -34,7 +34,11 @@ if (argv.i | argv.init) {
   console.log('  -g [file.js] \t Crea un gist con el fichero file.js');
   console.log(' ');
 
-} else {
+} else if(argv.c)
+  build.colaboradores(argv.c);
+
+
+}else {
 
     console.log('Opción inválida, introduca automatizacion-vagos -h para ver los comandos válidos');
 
