@@ -25,8 +25,9 @@ function mostrarColaboradores(repo,token,user) {
         let aux = user.login + '/' + repo;
         let client = github.client(token);
         let ghrepo = client.repo(aux);
-        let collaborators = ghrepo.collaborators((err,contributors) => {
+        ghrepo.collaborators((err,contributors) => {
           if (err) console.log(err);
+          console.log("contributors");
         });
     });
 }
