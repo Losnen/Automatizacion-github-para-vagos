@@ -71,14 +71,12 @@ function getOrganizacion(token) {
         var ghme = client.me();
 
         ghme.orgs(function (err, org) {
-            if (err) {
-                console.log(err);
-            } else {
-                for (var i = 0; i < org.length; i++) {
-                    console.log("Organización: " + org[i].login);
-                    console.log("|-------------> Descripción: " + org[i].description);
-                }
-            };
+            if (err) console.log(err);
+
+            for (var i = 0; i < org.length; i++) {
+                console.log("Organización: " + org[i].login);
+                console.log("|-------------> Descripción: " + org[i].description);
+            }
         });
     });
 }

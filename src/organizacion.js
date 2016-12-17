@@ -4,7 +4,7 @@ import inquirer from 'inquirer';
 import fs from 'fs';
 import { readToken, getBody } from './codigo';
 
-const organizacion = async (repo) => {
+const organizacion = async(repo) => {
 
     if (!fs.existsSync(process.env.HOME + '/.automatizacion-para-vagos/token.json')) {
         console.log(' ');
@@ -25,16 +25,14 @@ function getOrganizacion(token) {
         let client = github.client(token);
         let ghme = client.me();
 
-        ghme.orgs((err,org) => {
-          if (err) {
-            console.log(err);
-          } else{
-                for (let i = 0; i < org.length; i++) {
-                    console.log("Organización: "+org[i].login);
-                    console.log("|-------------> Descripción: "+org[i].description);
-                    
-                }
-            };
+        ghme.orgs((err, org) => {
+            if (err) console.log(err);
+
+            for (let i = 0; i < org.length; i++) {
+                console.log("Organización: " + org[i].login);
+                console.log("|-------------> Descripción: " + org[i].description);
+            }
+            console.log(" ");
         });
     });
 }
