@@ -74,9 +74,16 @@ function mostrarColaboradores(repo, token, user) {
         var aux = user.login + '/' + repo;
         var client = _octonode2.default.client(token);
         var ghrepo = client.repo(aux);
+        console.log("Colaboradores del repo: ");
+        console.log(" ");
+
         ghrepo.collaborators(function (err, contributors) {
             if (err) console.log(err);
-            console.log(contributors);
+            for (var i = 0; i < contributors.length; i++) {
+                console.log(contributors[i].login);
+            }
+            console.log(" ");
+            resolve(contributors);
         });
     });
 }

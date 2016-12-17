@@ -52,7 +52,7 @@ function readCmdLineBranches() {
             message: 'Nombre de la primera rama'
         }, {
             type: 'input',
-            message: 'Nombre de la primera rama',
+            message: 'Nombre de la segunda rama',
             name: 'rama2'
         }];
 

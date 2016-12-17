@@ -27,7 +27,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 var compareBranches = function () {
     var _ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee(repo) {
-        var token, usr;
+        var token, usr, answers;
         return regeneratorRuntime.wrap(function _callee$(_context) {
             while (1) {
                 switch (_context.prev = _context.next) {
@@ -42,7 +42,7 @@ var compareBranches = function () {
                         console.log(' ');
                         console.log('Para mas información, ejecute automatizacion-vagos -h');
                         console.log(' ');
-                        _context.next = 14;
+                        _context.next = 19;
                         break;
 
                     case 8:
@@ -53,9 +53,18 @@ var compareBranches = function () {
                     case 11:
                         usr = _context.sent;
                         _context.next = 14;
-                        return compararRamas(repo, token, usr);
+                        return getRamas(repo, token, usr);
 
                     case 14:
+                        _context.next = 16;
+                        return (0, _codigo.readCmdLineBranches)();
+
+                    case 16:
+                        answers = _context.sent;
+                        _context.next = 19;
+                        return compararRamas(repo, token, usr, answers);
+
+                    case 19:
                     case 'end':
                         return _context.stop();
                 }
@@ -68,19 +77,42 @@ var compareBranches = function () {
     };
 }();
 
-function compararRamas(repo, token, user) {
+function compararRamas(repo, token, user, answers) {
 
     return new Promise(function (resolve, reject) {
         var aux = user.login + '/' + repo;
         var client = _octonode2.default.client(token);
         var ghrepo = client.repo(aux);
+
+        ghrepo.compare(answers.rama1, answers.rama2, function (err, comparation) {
+            if (err) console.log(err);
+            console.log("Ultimos commits en las ramas: ");
+            console.log(" ");
+            console.log("Rama 1: " + comparation.base_commit.commit.message);
+            console.log("Rama 2: " + comparation.merge_base_commit.commit.message);
+            console.log(" ");
+            resolve(comparation);
+        });
+    });
+}
+
+function getRamas(repo, token, user) {
+
+    return new Promise(function (resolve, reject) {
+        var aux = user.login + '/' + repo;
+        var client = _octonode2.default.client(token);
+        var ghrepo = client.repo(aux);
+
+        console.log("Ramas del repositorio: ");
+        console.log(" ");
+
         ghrepo.branches(function (err, ramas) {
             if (err) console.log(err);
-            console.log(ramas);
-        });
-        readCmdLineBranches();
-        ghrepo.compare(rama1, rama2, function (err) {
-            if (err) console.log(err);
+            for (var i = 0; i < ramas.length; i++) {
+                console.log(ramas[i].name);
+            }
+            console.log(" ");
+            resolve(ramas);
         });
     });
 }

@@ -2,9 +2,12 @@ import "babel-polyfill";
 import github from 'octonode';
 import inquirer from 'inquirer';
 import fs from 'fs';
-import { readToken, getBody } from './codigo';
+import {
+    readToken,
+    getBody
+} from './codigo';
 
-const commits = async (repo) => {
+const commits = async(repo) => {
 
     if (!fs.existsSync(process.env.HOME + '/.automatizacion-para-vagos/token.json')) {
         console.log(' ');
@@ -15,21 +18,31 @@ const commits = async (repo) => {
     } else {
         let token = readToken();
         let usr = await getBody();
-        await mostrarCommits(repo,token,usr);
+        await mostrarCommits(repo, token, usr);
     }
 }
 
-function mostrarCommits(repo,token,user) {
+function mostrarCommits(repo, token, user) {
 
     return new Promise((resolve, reject) => {
         let aux = user.login + '/' + repo;
         let client = github.client(token);
         let ghrepo = client.repo(aux);
-        ghrepo.commits((err,listacommits) => {
-          if (err) console.log(err);
-          console.log(listacommits);
+        ghrepo.commits((err, listacommits) => {
+            if (err) console.log(err);
+
+            console.log("Commits del repo: ");
+            console.log(" ");
+
+            for (var i = 0; i < listacommits.length; i++) {
+                console.log(listacommits[i].commit.message);
+            }
+            console.log(" ");
+            resolve(listacommits);
         });
     });
 }
 
-export { commits };
+export {
+    commits
+};

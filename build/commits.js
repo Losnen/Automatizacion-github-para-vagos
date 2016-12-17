@@ -76,7 +76,15 @@ function mostrarCommits(repo, token, user) {
         var ghrepo = client.repo(aux);
         ghrepo.commits(function (err, listacommits) {
             if (err) console.log(err);
-            console.log(listacommits);
+
+            console.log("Commits del repo: ");
+            console.log(" ");
+
+            for (var i = 0; i < listacommits.length; i++) {
+                console.log(listacommits[i].commit.message);
+            }
+            console.log(" ");
+            resolve(listacommits);
         });
     });
 }

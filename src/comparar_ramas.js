@@ -15,7 +15,8 @@ const compareBranches = async (repo) => {
     } else {
         let token = readToken();
         let usr = await getBody();
-        let answers = await readCmdLineBranches();
+        await getRamas(repo,token,usr);
+        let answers =  await readCmdLineBranches();
         await compararRamas(repo,token,usr,answers);
     }
 }
@@ -27,14 +28,35 @@ function compararRamas(repo,token,user,answers) {
         let client = github.client(token);
         let ghrepo = client.repo(aux);
 
-        ghrepo.branches((err, ramas) => {
-          if (err) console.log(err);
-          console.log(ramas);
-        });
-
         ghrepo.compare(answers.rama1,answers.rama2,(err,comparation) => {
           if (err) console.log(err);
-          console.log(comparation);
+          console.log("Ultimos commits en las ramas: ");
+          console.log(" ");
+          console.log("Rama 1: " + comparation.base_commit.commit.message);
+          console.log("Rama 2: " + comparation.merge_base_commit.commit.message);
+          console.log(" ");
+          resolve(comparation);
+        });
+    });
+}
+
+function getRamas(repo,token,user) {
+
+    return new Promise((resolve, reject) => {
+        let aux = user.login + '/' + repo;
+        let client = github.client(token);
+        let ghrepo = client.repo(aux);
+
+        console.log("Ramas del repositorio: ")
+        console.log(" ");
+
+        ghrepo.branches((err, ramas) => {
+          if (err) console.log(err);
+            for (let i = 0; i < ramas.length; i++) {
+              console.log(ramas[i].name);
+            }
+            console.log(" ");
+            resolve(ramas);
         });
     });
 }
