@@ -52,10 +52,16 @@ if (argv.i | argv.init) {
 
 } else if (argv.a) {
 
+    let commit = argv.a + " ";
+    for (let i = 0; i < argv._.length; i++) {
+        commit = commit + argv._[i] + " ";
+    }
+
     require('simple-git')()
         .add('.')
-        .commit(argv.a)
+        .commit(commit)
         .push(['origin', 'master'], () => {});
+
 
 } else if (argv.v) {
 
@@ -70,10 +76,19 @@ if (argv.i | argv.init) {
     console.log(' ');
     console.log('Options:');
     console.log(' ');
-    console.log('  -i           \t Genera el token.');
-    console.log('  -r [mi-repo] \t Crea el repositorio mi-repo');
-    console.log('  -b [mi-repo] \t Borra el repositorio mi-repo');
-    console.log('  -g [file.js] \t Crea un gist con el fichero file.js');
+    console.log('  -i             \t Genera el token.');
+    console.log('  -r [mi-repo]   \t Crea el repositorio mi-repo');
+    console.log('  -b [mi-repo]   \t Borra el repositorio mi-repo');
+    console.log('  -g [file.js]   \t Crea un gist con el fichero file.js');
+    console.log('  -c [mi-repo]   \t Obtiene los colaboradores del repositorio mi-repo');
+    console.log('  -l [mi-repo]   \t Lista los commits del repositorio mi-repo');
+    console.log('  -m [mi-repo]   \t Lista las ramas y permite realizar una comparacion entre dos ramas.');
+    console.log('  -f [user/repo] \t Hace un fork de user/repo');
+    console.log('  -u [user]      \t Muestra información sobre el usuario user');
+    console.log('  -p [mi-repo]   \t Hace un pull resuest de un repositorio que tenemos forkeado');
+    console.log('  -a [commit]    \t Ejecuta git add, git commit y git push en un solo paso.');
+    console.log('  -v             \t Muestra la versión del CLI');
+    console.log('  -o             \t Devuelve una lista con mis organizaciones');
     console.log(' ');
 
 } else {
