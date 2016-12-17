@@ -29,8 +29,10 @@ function getOrganizacion(token) {
           if (err) {
             console.log(err);
           } else{
-                for (let i = 0; i < organizacion.length; i++) {
-                    console.log(organizacion[i].login);
+                for (let i = 0; i < org.length; i++) {
+                    console.log("Organización: "+org[i].login);
+                    console.log("|-------------> Descripción: "+org[i].description);
+                    
                 }
             };
         });
