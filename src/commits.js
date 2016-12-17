@@ -2,10 +2,7 @@ import "babel-polyfill";
 import github from 'octonode';
 import inquirer from 'inquirer';
 import fs from 'fs';
-import {
-    readToken,
-    getBody
-} from './codigo';
+import { readToken, getBody } from './codigo';
 
 const commits = async(repo) => {
 
@@ -28,6 +25,7 @@ function mostrarCommits(repo, token, user) {
         let aux = user.login + '/' + repo;
         let client = github.client(token);
         let ghrepo = client.repo(aux);
+
         ghrepo.commits((err, listacommits) => {
             if (err) console.log(err);
 
@@ -43,6 +41,4 @@ function mostrarCommits(repo, token, user) {
     });
 }
 
-export {
-    commits
-};
+export { commits };

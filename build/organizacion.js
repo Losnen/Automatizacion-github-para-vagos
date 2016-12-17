@@ -77,6 +77,7 @@ function getOrganizacion(token) {
                 console.log("Organización: " + org[i].login);
                 console.log("|-------------> Descripción: " + org[i].description);
             }
+            console.log(" ");
         });
     });
 }

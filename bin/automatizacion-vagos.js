@@ -21,31 +21,41 @@ if (argv.i | argv.init) {
     build.gist(argv.g);
     console.log("Gist " + argv.g + " Creado con éxito");
 
-} else if (argv.h) {
+} else if (argv.c) {
 
-  console.log(' ');
-  console.log('Usage: automatizacion-vagos [options]');
-  console.log(' ');
-  console.log('Options:');
-  console.log(' ');
-  console.log('  -i           \t Genera el token.');
-  console.log('  -r [mi-repo] \t Crea el repositorio mi-repo');
-  console.log('  -b [mi-repo] \t Borra el repositorio mi-repo');
-  console.log('  -g [file.js] \t Crea un gist con el fichero file.js');
-  console.log(' ');
-
-} else if(argv.c){
-  build.colaboradores(argv.c);
-
+    build.colaboradores(argv.c);
 
 } else if (argv.l) {
-  build.commits(argv.l)
 
-} else if(argv.k){
-  build.compareBranches(argv.k);
-} else if(argv.o){
-  build.organizacion();
-}else {
+    build.commits(argv.l)
+
+} else if (argv.k) {
+
+    build.compareBranches(argv.k);
+
+} else if (argv.o) {
+
+    build.organizacion();
+
+} else if (argv.f) {
+
+    build.fork(argv.f);
+    console.log("Fork completado con éxito");
+
+} else if (argv.h) {
+
+    console.log(' ');
+    console.log('Usage: automatizacion-vagos [options]');
+    console.log(' ');
+    console.log('Options:');
+    console.log(' ');
+    console.log('  -i           \t Genera el token.');
+    console.log('  -r [mi-repo] \t Crea el repositorio mi-repo');
+    console.log('  -b [mi-repo] \t Borra el repositorio mi-repo');
+    console.log('  -g [file.js] \t Crea un gist con el fichero file.js');
+    console.log(' ');
+
+} else {
 
     console.log('Opción inválida, introduca automatizacion-vagos -h para ver los comandos válidos');
 

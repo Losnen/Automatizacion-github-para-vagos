@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.commits = undefined;
+exports.fork = undefined;
 
 require('babel-polyfill');
 
@@ -25,9 +25,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
-var commits = function () {
-    var _ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee(repo) {
-        var token, usr;
+var fork = function () {
+    var _ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee(datos) {
+        var token;
         return regeneratorRuntime.wrap(function _callee$(_context) {
             while (1) {
                 switch (_context.prev = _context.next) {
@@ -42,20 +42,15 @@ var commits = function () {
                         console.log(' ');
                         console.log('Para mas información, ejecute automatizacion-vagos -h');
                         console.log(' ');
-                        _context.next = 14;
+                        _context.next = 11;
                         break;
 
                     case 8:
                         token = (0, _codigo.readToken)();
                         _context.next = 11;
-                        return (0, _codigo.getBody)();
+                        return crearFork(datos, token);
 
                     case 11:
-                        usr = _context.sent;
-                        _context.next = 14;
-                        return mostrarCommits(repo, token, usr);
-
-                    case 14:
                     case 'end':
                         return _context.stop();
                 }
@@ -63,31 +58,21 @@ var commits = function () {
         }, _callee, undefined);
     }));
 
-    return function commits(_x) {
+    return function fork(_x) {
         return _ref.apply(this, arguments);
     };
 }();
 
-function mostrarCommits(repo, token, user) {
+function crearFork(datos, token) {
 
     return new Promise(function (resolve, reject) {
-        var aux = user.login + '/' + repo;
+
         var client = _octonode2.default.client(token);
-        var ghrepo = client.repo(aux);
+        var ghme = client.me();
 
-        ghrepo.commits(function (err, listacommits) {
+        ghme.fork(datos, function (err) {
             if (err) console.log(err);
-
-            console.log("Commits del repo: ");
-            console.log(" ");
-
-            for (var i = 0; i < listacommits.length; i++) {
-                console.log(listacommits[i].commit.message);
-            }
-            console.log(" ");
-            resolve(listacommits);
         });
     });
 }
-
-exports.commits = commits;
+exports.fork = fork;

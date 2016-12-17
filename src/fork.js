@@ -2,9 +2,9 @@ import "babel-polyfill";
 import github from 'octonode';
 import inquirer from 'inquirer';
 import fs from 'fs';
-import { readToken, getBody } from './codigo';
+import { readToken } from './codigo';
 
-const colaboradores = async(repo) => {
+const fork = async(datos) => {
 
     if (!fs.existsSync(process.env.HOME + '/.automatizacion-para-vagos/token.json')) {
         console.log(' ');
@@ -14,29 +14,20 @@ const colaboradores = async(repo) => {
         console.log(' ');
     } else {
         let token = readToken();
-        let usr = await getBody();
-        await mostrarColaboradores(repo, token, usr);
+        await crearFork(datos, token);
     }
 }
 
-function mostrarColaboradores(repo, token, user) {
+function crearFork(datos, token) {
 
     return new Promise((resolve, reject) => {
-        let aux = user.login + '/' + repo;
-        let client = github.client(token);
-        let ghrepo = client.repo(aux);
-        console.log("Colaboradores del repo: ");
-        console.log(" ");
 
-        ghrepo.collaborators((err, contributors) => {
+        let client = github.client(token);
+        let ghme = client.me();
+
+        ghme.fork(datos, (err) => {
             if (err) console.log(err);
-            for (let i = 0; i < contributors.length; i++) {
-                console.log(contributors[i].login);
-            }
-            console.log(" ");
-            resolve(contributors);
         });
     });
 }
-
-export { colaboradores };
+export { fork };
