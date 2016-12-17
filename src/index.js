@@ -7,4 +7,5 @@ import { commits } from './commits';
 import { compareBranches } from './comparar_ramas'
 import { organizacion } from './organizacion'
 import { fork } from './fork'
-export { init, repo, borrar, gist, colaboradores, commits, compareBranches, organizacion, fork};
+import { user } from './infouser'
+export { init, repo, borrar, gist, colaboradores, commits, compareBranches, organizacion, fork, user};

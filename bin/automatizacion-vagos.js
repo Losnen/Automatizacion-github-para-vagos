@@ -42,6 +42,10 @@ if (argv.i | argv.init) {
     build.fork(argv.f);
     console.log("Fork completado con éxito");
 
+} else if (argv.u) {
+
+    build.user(argv.u);
+
 } else if (argv.h) {
 
     console.log(' ');
