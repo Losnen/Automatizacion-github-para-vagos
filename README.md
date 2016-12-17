@@ -10,6 +10,7 @@
 * ``` automatizacion-vagos -g [file.js] ``` Crea el gist con el fichero ```file.js```. Para subir el fichero es necesario crear un directorio ``` gist/ ``` con el fichero ``` file.js ```.
 * ``` automatizacion-vagos -h ``` Muestra la ayuda.
 * ``` automatizacion-vagos -c [mi-repo] ``` Muestra los colaboradores de *mi-repo*
+* ``` automatizacion-vagos -l [mi-repo] ``` Muestra los commits de *mi-repo*
 
 ## Ejemplo
 

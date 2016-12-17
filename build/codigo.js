@@ -4,6 +4,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.readCmdLine = readCmdLine;
+exports.readCmdLineBranches = readCmdLineBranches;
 exports.readToken = readToken;
 exports.getBody = getBody;
 
@@ -34,6 +35,25 @@ function readCmdLine() {
             type: 'password',
             message: 'Contraseña de github',
             name: 'passwd'
+        }];
+
+        _inquirer2.default.prompt(questions).then(function (answers) {
+            resolve(answers);
+        });
+    });
+}
+
+function readCmdLineBranches() {
+
+    return new Promise(function (resolve, reject) {
+        var questions = [{
+            type: 'input',
+            name: 'rama1',
+            message: 'Nombre de la primera rama'
+        }, {
+            type: 'input',
+            message: 'Nombre de la primera rama',
+            name: 'rama2'
         }];
 
         _inquirer2.default.prompt(questions).then(function (answers) {

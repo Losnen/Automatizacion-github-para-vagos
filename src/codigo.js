@@ -22,6 +22,25 @@ export function readCmdLine() {
     });
 }
 
+export function readCmdLineBranches() {
+
+    return new Promise((resolve, reject) => {
+        var questions = [{
+            type: 'input',
+            name: 'rama1',
+            message: 'Nombre de la primera rama'
+        }, {
+            type: 'input',
+            message: 'Nombre de la segunda rama',
+            name: 'rama2'
+        }];
+
+        inquirer.prompt(questions).then((answers) => {
+            resolve(answers);
+        });
+    });
+}
+
 export function readToken() {
 
     let file = fs.readFileSync(process.env.HOME + '/.automatizacion-para-vagos/token.json', "utf8");

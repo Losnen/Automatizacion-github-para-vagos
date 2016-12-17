@@ -41,7 +41,9 @@ if (argv.i | argv.init) {
 } else if (argv.l) {
   build.commits(argv.l)
 
-} else {
+} else if(argv.r){
+  build.compareBranches(argv.r);
+}else {
 
     console.log('Opción inválida, introduca automatizacion-vagos -h para ver los comandos válidos');
 
