@@ -19,6 +19,8 @@ var _commits = require('./commits');
 
 var _comparar_ramas = require('./comparar_ramas');
 
+var _organizacion = require('./organizacion');
+
 exports.init = _init.init;
 exports.repo = _repo.repo;
 exports.borrar = _borrar.borrar;

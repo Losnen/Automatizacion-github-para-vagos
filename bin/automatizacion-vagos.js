@@ -43,6 +43,8 @@ if (argv.i | argv.init) {
 
 } else if(argv.k){
   build.compareBranches(argv.k);
+} else if(argv.o){
+  build.organizacion();
 }else {
 
     console.log('Opción inválida, introduca automatizacion-vagos -h para ver los comandos válidos');
