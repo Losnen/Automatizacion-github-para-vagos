@@ -29,9 +29,9 @@ if (argv.i | argv.init) {
 
     build.commits(argv.l)
 
-} else if (argv.k) {
+} else if (argv.m) {
 
-    build.compareBranches(argv.k);
+    build.compareBranches(argv.m);
 
 } else if (argv.o) {
 
@@ -45,6 +45,23 @@ if (argv.i | argv.init) {
 } else if (argv.u) {
 
     build.user(argv.u);
+
+} else if (argv.p) {
+
+    build.pull(argv.p);
+
+} else if (argv.a) {
+
+    require('simple-git')()
+        .add('.')
+        .commit(argv.a)
+        .push(['origin', 'master'], () => {});
+
+} else if (argv.v) {
+
+    console.log(' ');
+    console.log('Versión: ' + require('../package.json').version);
+    console.log(' ');
 
 } else if (argv.h) {
 
