@@ -38,6 +38,9 @@ if (argv.i | argv.init) {
   build.colaboradores(argv.c);
 
 
+} else if (argv.l) {
+  build.commits(argv.l)
+
 } else {
 
     console.log('Opción inválida, introduca automatizacion-vagos -h para ver los comandos válidos');
