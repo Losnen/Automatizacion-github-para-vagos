@@ -2,7 +2,7 @@ import "babel-polyfill";
 import github from 'octonode';
 import inquirer from 'inquirer';
 import fs from 'fs';
-import { readToken, getBody } from './codigo';
+import { readToken, getBody, readCmdLineBranches } from './codigo';
 
 const compareBranches = async (repo) => {
 
@@ -15,23 +15,26 @@ const compareBranches = async (repo) => {
     } else {
         let token = readToken();
         let usr = await getBody();
-        await compararRamas(repo,token,usr);
+        let answers = await readCmdLineBranches();
+        await compararRamas(repo,token,usr,answers);
     }
 }
 
-function compararRamas(repo,token,user) {
+function compararRamas(repo,token,user,answers) {
 
     return new Promise((resolve, reject) => {
         let aux = user.login + '/' + repo;
         let client = github.client(token);
         let ghrepo = client.repo(aux);
+
         ghrepo.branches((err, ramas) => {
           if (err) console.log(err);
           console.log(ramas);
         });
-        readCmdLineBranches();
-        ghrepo.compare(rama1,rama2,(err) => {
+
+        ghrepo.compare(answers.rama1,answers.rama2,(err,comparation) => {
           if (err) console.log(err);
+          console.log(comparation);
         });
     });
 }
