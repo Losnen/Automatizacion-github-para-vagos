@@ -4,7 +4,7 @@ import inquirer from 'inquirer';
 import fs from 'fs';
 import { readToken, getBody } from './codigo';
 
-const borrar = async (repo) => {
+const organizacion = async (repo) => {
 
     if (!fs.existsSync(process.env.HOME + '/.automatizacion-para-vagos/token.json')) {
         console.log(' ');
@@ -29,10 +29,12 @@ function getOrganizacion(token) {
           if (err) {
             console.log(err);
           } else{
-                console.log(org);
+                for (let i = 0; i < organizacion.length; i++) {
+                    console.log(organizacion[i].login);
+                }
             };
         });
     });
 }
 
-export { borrar };
+export { organizacion };
