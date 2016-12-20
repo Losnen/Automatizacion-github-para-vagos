@@ -54,6 +54,7 @@ export function getBody() {
         let token = readToken();
         let client = github.client(token);
         client.get('/user', {}, (err, status, body, headers) => {
+            if (err) console.log("Error: " + err.statusCode + ": " + err.message);
             resolve(body);
         });
     });

@@ -75,6 +75,7 @@ function getBody() {
         var token = readToken();
         var client = _octonode2.default.client(token);
         client.get('/user', {}, function (err, status, body, headers) {
+            if (err) console.log("Error: " + err.statusCode + ": " + err.message);
             resolve(body);
         });
     });

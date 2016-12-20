@@ -71,7 +71,11 @@ function crearFork(datos, token) {
         var ghme = client.me();
 
         ghme.fork(datos, function (err) {
-            if (err) console.log(err);
+            if (err) {
+                console.log("Error: " + err.statusCode + ": " + err.message);
+            } else {
+                console.log("Fork completado con éxito");
+            }
         });
     });
 }

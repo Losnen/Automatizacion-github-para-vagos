@@ -2,7 +2,9 @@ import "babel-polyfill";
 import github from 'octonode';
 import inquirer from 'inquirer';
 import fs from 'fs';
-import { readToken } from './codigo';
+import {
+    readToken
+} from './codigo';
 
 const user = async(datos) => {
 
@@ -24,8 +26,8 @@ function getUserInfo(datos, token) {
 
         let client = github.client(token);
         let ghuser = client.user(datos);
-        ghuser.info((err,info) => {
-            if (err) console.log(err);
+        ghuser.info((err, info) => {
+            if (err) console.log("Error: " + err.statusCode + ": " + err.message);
             console.log(" ");
             console.log("Usuario: " + info.login);
             console.log("Nombre: " + info.name);
@@ -41,4 +43,6 @@ function getUserInfo(datos, token) {
     });
 }
 
-export { user };
+export {
+    user
+};

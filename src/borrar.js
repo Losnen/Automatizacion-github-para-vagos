@@ -2,9 +2,12 @@ import "babel-polyfill";
 import github from 'octonode';
 import inquirer from 'inquirer';
 import fs from 'fs';
-import { readToken, getBody } from './codigo';
+import {
+    readToken,
+    getBody
+} from './codigo';
 
-const borrar = async (repo) => {
+const borrar = async(repo) => {
 
     if (!fs.existsSync(process.env.HOME + '/.automatizacion-para-vagos/token.json')) {
         console.log(' ');
@@ -15,20 +18,26 @@ const borrar = async (repo) => {
     } else {
         let token = readToken();
         let usr = await getBody();
-        await borrarRepo(repo,token,usr);
+        await borrarRepo(repo, token, usr);
     }
 }
 
-function borrarRepo(repo,token,user) {
+function borrarRepo(repo, token, user) {
 
     return new Promise((resolve, reject) => {
         let aux = user.login + '/' + repo;
         let client = github.client(token);
         let ghrepo = client.repo(aux);
         ghrepo.destroy((err) => {
-          if (err) console.log(err);
+            if (err) {
+                console.log("Error: " + err.statusCode + ": " + err.message);
+            } else {
+                console.log("Repo borrado con éxito");
+            }
         });
     });
 }
 
-export { borrar };
+export {
+    borrar
+};

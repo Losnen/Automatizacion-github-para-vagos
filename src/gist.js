@@ -16,32 +16,43 @@ const gist = async(file) => {
         console.log(' ');
     } else {
         let token = readToken();
-        await crearGist(file,token);
+        await crearGist(file, token);
     }
 }
 
-function crearGist(file,token) {
-
-    let contenido = fs.readFileSync('./gist/' + file,"utf8");
+function crearGist(file, token) {
 
     return new Promise((resolve, reject) => {
 
-        let client = github.client(token);
-        let ghgist = client.gist();
 
-        ghgist.create({
-            description: "Gist by automatizacion-vagos",
-            public: true,
-            files: {
-                fichero: {
-                    "filename": file,
-                    "content": contenido
+        try {
+            let contenido = fs.readFileSync('./gist/' + file, "utf8");
+            let client = github.client(token);
+            let ghgist = client.gist();
+
+            ghgist.create({
+                description: "Gist by automatizacion-vagos",
+                public: true,
+                files: {
+                    fichero: {
+                        "filename": file,
+                        "content": contenido
+                    }
                 }
-            }
-        }, (err) => {
-          if (err) console.log(err);
-        });
+            }, (err) => {
+                if (err) {
+                    console.log("Error: " + err.statusCode + ": " + err.message);
+                } else {
+                    console.log("Gist creado con éxito");
+                }
+            });
+        } catch (e) {
+            console.log("No existe el fichero en el directorio gist/" + file);
+            process.exit(1);
+        }
     });
 }
 
-export { gist };
+export {
+    gist
+};

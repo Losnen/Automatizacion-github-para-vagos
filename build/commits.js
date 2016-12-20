@@ -76,16 +76,20 @@ function mostrarCommits(repo, token, user) {
         var ghrepo = client.repo(aux);
 
         ghrepo.commits(function (err, listacommits) {
-            if (err) console.log(err);
-
-            console.log("Commits del repo: ");
-            console.log(" ");
-
-            for (var i = 0; i < listacommits.length; i++) {
-                console.log(listacommits[i].commit.message);
+            if (err) console.log("Error: " + err.statusCode + ": " + err.message);
+            try {
+                if (listacommits != undefined) {
+                    console.log("Commits del repo: ");
+                    console.log(" ");
+                }
+                for (var i = 0; i < listacommits.length; i++) {
+                    console.log(listacommits[i].commit.message);
+                }
+                console.log(" ");
+                resolve(listacommits);
+            } catch (e) {
+                console.log("El repo no tiene commits o no existe");
             }
-            console.log(" ");
-            resolve(listacommits);
         });
     });
 }

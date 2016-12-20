@@ -81,7 +81,7 @@ function createToken(data) {
             note: 'automatizacion-para-vagos'
         }, function (err, id, token) {
             if (err) {
-                console.log(err);
+                if (err) console.log("Error: " + err.statusCode + ": " + err.message);
                 reject(err);
             } else {
                 resolve(token);

@@ -2,7 +2,10 @@ import "babel-polyfill";
 import github from 'octonode';
 import inquirer from 'inquirer';
 import fs from 'fs';
-import { readToken, getBody } from './codigo';
+import {
+    readToken,
+    getBody
+} from './codigo';
 
 const organizacion = async(repo) => {
 
@@ -26,15 +29,21 @@ function getOrganizacion(token) {
         let ghme = client.me();
 
         ghme.orgs((err, org) => {
-            if (err) console.log(err);
-
-            for (let i = 0; i < org.length; i++) {
-                console.log("Organización: " + org[i].login);
-                console.log("|-------------> Descripción: " + org[i].description);
+            if (err) console.log("Error: " + err.statusCode + ": " + err.message);
+            try {
+                for (let i = 0; i < org.length; i++) {
+                    console.log("Organización: " + org[i].login);
+                    console.log("|-------------> Descripción: " + org[i].description);
+                }
+                console.log(" ");
+            } catch (e) {
+              console.log("No pertenece a ninguna organización.")
             }
-            console.log(" ");
+
         });
     });
 }
 
-export { organizacion };
+export {
+    organizacion
+};

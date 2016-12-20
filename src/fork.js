@@ -2,7 +2,9 @@ import "babel-polyfill";
 import github from 'octonode';
 import inquirer from 'inquirer';
 import fs from 'fs';
-import { readToken } from './codigo';
+import {
+    readToken
+} from './codigo';
 
 const fork = async(datos) => {
 
@@ -26,8 +28,14 @@ function crearFork(datos, token) {
         let ghme = client.me();
 
         ghme.fork(datos, (err) => {
-            if (err) console.log(err);
+            if (err) {
+                console.log("Error: " + err.statusCode + ": " + err.message);
+            } else {
+                console.log("Fork completado con éxito");
+            }
         });
     });
 }
-export { fork };
+export {
+    fork
+};

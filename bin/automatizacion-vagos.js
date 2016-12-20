@@ -14,12 +14,10 @@ if (argv.i | argv.init) {
 } else if (argv.b) {
 
     build.borrar(argv.b);
-    console.log("Repo " + argv.b + " eliminado con éxito");
 
 } else if (argv.g) {
 
     build.gist(argv.g);
-    console.log("Gist " + argv.g + " Creado con éxito");
 
 } else if (argv.c) {
 
@@ -40,7 +38,6 @@ if (argv.i | argv.init) {
 } else if (argv.f) {
 
     build.fork(argv.f);
-    console.log("Fork completado con éxito");
 
 } else if (argv.u) {
 

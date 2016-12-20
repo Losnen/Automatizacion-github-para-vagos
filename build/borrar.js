@@ -75,7 +75,11 @@ function borrarRepo(repo, token, user) {
         var client = _octonode2.default.client(token);
         var ghrepo = client.repo(aux);
         ghrepo.destroy(function (err) {
-            if (err) console.log(err);
+            if (err) {
+                console.log("Error: " + err.statusCode + ": " + err.message);
+            } else {
+                console.log("Repo borrado con éxito");
+            }
         });
     });
 }

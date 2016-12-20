@@ -2,7 +2,10 @@ import "babel-polyfill";
 import github from 'octonode';
 import inquirer from 'inquirer';
 import fs from 'fs';
-import { readToken, getBody } from './codigo';
+import {
+    readToken,
+    getBody
+} from './codigo';
 
 const colaboradores = async(repo) => {
 
@@ -25,18 +28,27 @@ function mostrarColaboradores(repo, token, user) {
         let aux = user.login + '/' + repo;
         let client = github.client(token);
         let ghrepo = client.repo(aux);
-        console.log("Colaboradores del repo: ");
-        console.log(" ");
 
         ghrepo.collaborators((err, contributors) => {
-            if (err) console.log(err);
-            for (let i = 0; i < contributors.length; i++) {
-                console.log(contributors[i].login);
+            if (err) {
+                console.log("Error: " + err.statusCode + ": " + err.message);
+            } else {
+                if (contributors != undefined) {
+                    console.log(" ");
+                    console.log("Colaboradores del repo: ");
+                    console.log(" ");
+                }
+                for (let i = 0; i < contributors.length; i++) {
+                    console.log(contributors[i].login);
+                }
+                console.log(" ");
+                resolve(contributors);
             }
-            console.log(" ");
-            resolve(contributors);
+
         });
     });
 }
 
-export { colaboradores };
+export {
+    colaboradores
+};

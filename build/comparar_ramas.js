@@ -103,16 +103,21 @@ function getRamas(repo, token, user) {
         var client = _octonode2.default.client(token);
         var ghrepo = client.repo(aux);
 
-        console.log("Ramas del repositorio: ");
-        console.log(" ");
-
         ghrepo.branches(function (err, ramas) {
-            if (err) console.log(err);
-            for (var i = 0; i < ramas.length; i++) {
-                console.log(ramas[i].name);
+            if (err) console.log("Error: " + err.statusCode + ": " + err.message);
+            try {
+                if (ramas != undefined) {
+                    console.log("Ramas del repositorio: ");
+                    console.log(" ");
+                }
+                for (var i = 0; i < ramas.length; i++) {
+                    console.log(ramas[i].name);
+                }
+                console.log(" ");
+                resolve(ramas);
+            } catch (e) {
+                console.log("No existen ramas para ese repo o el repo no existe.");
             }
-            console.log(" ");
-            resolve(ramas);
         });
     });
 }

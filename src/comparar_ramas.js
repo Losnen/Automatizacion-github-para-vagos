@@ -2,7 +2,11 @@ import "babel-polyfill";
 import github from 'octonode';
 import inquirer from 'inquirer';
 import fs from 'fs';
-import { readToken, getBody, readCmdLineBranches } from './codigo';
+import {
+    readToken,
+    getBody,
+    readCmdLineBranches
+} from './codigo';
 
 const compareBranches = async(repo) => {
 
@@ -47,18 +51,26 @@ function getRamas(repo, token, user) {
         let client = github.client(token);
         let ghrepo = client.repo(aux);
 
-        console.log("Ramas del repositorio: ")
-        console.log(" ");
-
         ghrepo.branches((err, ramas) => {
-            if (err) console.log(err);
-            for (let i = 0; i < ramas.length; i++) {
-                console.log(ramas[i].name);
+            if (err) console.log("Error: " + err.statusCode + ": " + err.message);
+            try {
+                if (ramas != undefined) {
+                    console.log("Ramas del repositorio: ")
+                    console.log(" ");
+                }
+                for (let i = 0; i < ramas.length; i++) {
+                    console.log(ramas[i].name);
+                }
+                console.log(" ");
+                resolve(ramas);
+            } catch (e) {
+                console.log("No existen ramas para ese repo o el repo no existe.");
             }
-            console.log(" ");
-            resolve(ramas);
+
         });
     });
 }
 
-export { compareBranches };
+export {
+    compareBranches
+};

@@ -41,7 +41,8 @@ var repo = function () {
                         console.log('Todavía no ha generado su token, primero ejecute automatizacion-vagos -i | --init');
                         console.log(' ');
                         console.log('Para mas información, ejecute automatizacion-vagos -h');
-                        console.log(' ');_context.next = 11;
+                        console.log(' ');
+                        _context.next = 11;
                         break;
 
                     case 8:
@@ -74,6 +75,7 @@ function createRepo(datos, token) {
             "description": "Repo created by automatización para vagos"
         }, function (err, status, body, headers) {
             if (err) {
+                if (err) console.log("Error: " + err.statusCode + ": " + err.message);
                 reject(err);
             } else {
 

@@ -70,7 +70,7 @@ function getUserInfo(datos, token) {
         var client = _octonode2.default.client(token);
         var ghuser = client.user(datos);
         ghuser.info(function (err, info) {
-            if (err) console.log(err);
+            if (err) console.log("Error: " + err.statusCode + ": " + err.message);
             console.log(" ");
             console.log("Usuario: " + info.login);
             console.log("Nombre: " + info.name);

@@ -1,13 +1,15 @@
 import "babel-polyfill";
 import github from 'octonode';
 import inquirer from 'inquirer';
-import { readCmdLine } from './codigo';
+import {
+    readCmdLine
+} from './codigo';
 import fs from 'fs';
 
 const init = async() => {
 
     if (fs.existsSync(process.env.HOME + '/.automatizacion-para-vagos/token.json')) {
-      console.log('Su token ya se ha generado y se encuentra en ' + process.env.HOME + '/.automatizacion-para-vagos/token.json')
+        console.log('Su token ya se ha generado y se encuentra en ' + process.env.HOME + '/.automatizacion-para-vagos/token.json')
     } else {
         let datos = await readCmdLine();
         let token = await createToken(datos);
@@ -28,7 +30,7 @@ function createToken(data) {
             note: 'automatizacion-para-vagos'
         }, (err, id, token) => {
             if (err) {
-                console.log(err);
+                if (err) console.log("Error: " + err.statusCode + ": " + err.message);
                 reject(err);
             } else {
                 resolve(token);
@@ -38,4 +40,6 @@ function createToken(data) {
 }
 
 
-export { init };
+export {
+    init
+};

@@ -65,25 +65,33 @@ var gist = function () {
 
 function crearGist(file, token) {
 
-    var contenido = _fs2.default.readFileSync('./gist/' + file, "utf8");
-
     return new Promise(function (resolve, reject) {
 
-        var client = _octonode2.default.client(token);
-        var ghgist = client.gist();
+        try {
+            var contenido = _fs2.default.readFileSync('./gist/' + file, "utf8");
+            var client = _octonode2.default.client(token);
+            var ghgist = client.gist();
 
-        ghgist.create({
-            description: "Gist by automatizacion-vagos",
-            public: true,
-            files: {
-                fichero: {
-                    "filename": file,
-                    "content": contenido
+            ghgist.create({
+                description: "Gist by automatizacion-vagos",
+                public: true,
+                files: {
+                    fichero: {
+                        "filename": file,
+                        "content": contenido
+                    }
                 }
-            }
-        }, function (err) {
-            if (err) console.log(err);
-        });
+            }, function (err) {
+                if (err) {
+                    console.log("Error: " + err.statusCode + ": " + err.message);
+                } else {
+                    console.log("Gist creado con éxito");
+                }
+            });
+        } catch (e) {
+            console.log("No existe el fichero en el directorio gist/" + file);
+            process.exit(1);
+        }
     });
 }
 

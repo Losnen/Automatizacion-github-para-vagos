@@ -2,16 +2,19 @@ import "babel-polyfill";
 import github from 'octonode';
 import inquirer from 'inquirer';
 import fs from 'fs';
-import { readToken } from './codigo';
+import {
+    readToken
+} from './codigo';
 
-const repo = async (datos) => {
+const repo = async(datos) => {
 
     if (!fs.existsSync(process.env.HOME + '/.automatizacion-para-vagos/token.json')) {
-      console.log(' ');
-      console.log('Todavía no ha generado su token, primero ejecute automatizacion-vagos -i | --init');
-      console.log(' ');
-      console.log('Para mas información, ejecute automatizacion-vagos -h');
-      console.log(' ');    } else {
+        console.log(' ');
+        console.log('Todavía no ha generado su token, primero ejecute automatizacion-vagos -i | --init');
+        console.log(' ');
+        console.log('Para mas información, ejecute automatizacion-vagos -h');
+        console.log(' ');
+    } else {
         let token = readToken();
         await createRepo(datos, token);
     }
@@ -29,6 +32,7 @@ function createRepo(datos, token) {
             "description": "Repo created by automatización para vagos",
         }, (err, status, body, headers) => {
             if (err) {
+                if (err) console.log("Error: " + err.statusCode + ": " + err.message);
                 reject(err);
             } else {
 
@@ -43,4 +47,6 @@ function createRepo(datos, token) {
     });
 }
 
-export { repo };
+export {
+    repo
+};
