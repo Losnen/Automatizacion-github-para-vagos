@@ -53,6 +53,7 @@
     "inquirer": "^2.0.0",
     "minimist": "^1.2.0",
     "octonode": "^0.7.7",
+    "remarkable-classy": "0.0.1",
     "simple-git": "^1.65.0"
   }
 }

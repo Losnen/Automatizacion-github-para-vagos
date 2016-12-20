@@ -8,4 +8,5 @@ import { compareBranches } from './comparar_ramas'
 import { organizacion } from './organizacion'
 import { fork } from './fork'
 import { user } from './infouser'
-export { init, repo, borrar, gist, colaboradores, commits, compareBranches, organizacion, fork, user};
+import { convert } from './convert'
+export { init, repo, borrar, gist, colaboradores, commits, compareBranches, organizacion, fork, user,convert};

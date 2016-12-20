@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.user = exports.fork = exports.organizacion = exports.compareBranches = exports.commits = exports.colaboradores = exports.gist = exports.borrar = exports.repo = exports.init = undefined;
+exports.convert = exports.user = exports.fork = exports.organizacion = exports.compareBranches = exports.commits = exports.colaboradores = exports.gist = exports.borrar = exports.repo = exports.init = undefined;
 
 var _init = require('./init');
 
@@ -25,6 +25,8 @@ var _fork = require('./fork');
 
 var _infouser = require('./infouser');
 
+var _convert = require('./convert');
+
 exports.init = _init.init;
 exports.repo = _repo.repo;
 exports.borrar = _borrar.borrar;
@@ -35,3 +37,4 @@ exports.compareBranches = _comparar_ramas.compareBranches;
 exports.organizacion = _organizacion.organizacion;
 exports.fork = _fork.fork;
 exports.user = _infouser.user;
+exports.convert = _convert.convert;
