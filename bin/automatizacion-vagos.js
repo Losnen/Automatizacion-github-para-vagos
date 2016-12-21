@@ -43,9 +43,9 @@ if (argv.i | argv.init) {
 
     build.user(argv.u);
 
-} else if (argv.p) {
+} else if (argv.d) {
 
-    build.pull(argv.p);
+    build.deploy();
 
 } else if (argv.e) {
 
@@ -86,7 +86,6 @@ if (argv.i | argv.init) {
     console.log('  -m [mi-repo]   \t Lista las ramas y permite realizar una comparacion entre dos ramas.');
     console.log('  -f [user/repo] \t Hace un fork de user/repo');
     console.log('  -u [user]      \t Muestra información sobre el usuario user');
-    console.log('  -p [mi-repo]   \t Hace un pull resuest de un repositorio que tenemos forkeado');
     console.log('  -a [commit]    \t Ejecuta git add, git commit y git push en un solo paso.');
     console.log('  -v             \t Muestra la versión del CLI');
     console.log('  -o             \t Devuelve una lista con mis organizaciones');

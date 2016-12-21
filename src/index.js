@@ -9,4 +9,5 @@ import { organizacion } from './organizacion'
 import { fork } from './fork'
 import { user } from './infouser'
 import { convert } from './convert'
-export { init, repo, borrar, gist, colaboradores, commits, compareBranches, organizacion, fork, user,convert};
+import { deploy } from './deploy';
+export { init, repo, borrar, gist, colaboradores, commits, compareBranches, organizacion, fork, user, convert, deploy};

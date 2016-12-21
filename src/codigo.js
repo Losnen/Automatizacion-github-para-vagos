@@ -48,6 +48,13 @@ export function readToken() {
     return (file.token);
 }
 
+export function readDropboxToken() {
+
+    let file = fs.readFileSync(process.env.HOME + '/.automatizacion-para-vagos/dropbox.json', "utf8");
+    file = JSON.parse(file);
+    return (file.token);
+}
+
 export function getBody() {
 
     return new Promise((resolve, reject) => {

@@ -1,9 +1,9 @@
 import "babel-polyfill";
-let markdownpdf = require("markdown-pdf");
-let path = require('path');
-let fs = require("fs");
-console.log(process.cwd());
-var options = {
+import markdownpdf from 'markdown-pdf';
+import path from 'path';
+import fs from 'fs';
+
+let options = {
     remarkable: {
         html: true,
         breaks: true,
@@ -11,11 +11,13 @@ var options = {
         syntax: [ 'footnote', 'sup', 'sub' ]
     }
 }
+
 function convert() {
-	
-	markdownpdf(options).from(process.cwd()+"/README.md").to(process.cwd()+"/README.pdf", function () {
+
+	markdownpdf(options).from(process.cwd()+"/README.md").to(process.cwd()+"/README.pdf", (err) => {
+    if (err) console.log(err);
 	  console.log("PDF creado correctamente")
-	})
+	});
 }
 export {
     convert

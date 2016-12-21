@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.readCmdLine = readCmdLine;
 exports.readCmdLineBranches = readCmdLineBranches;
 exports.readToken = readToken;
+exports.readDropboxToken = readDropboxToken;
 exports.getBody = getBody;
 
 require('babel-polyfill');
@@ -65,6 +66,13 @@ function readCmdLineBranches() {
 function readToken() {
 
     var file = _fs2.default.readFileSync(process.env.HOME + '/.automatizacion-para-vagos/token.json', "utf8");
+    file = JSON.parse(file);
+    return file.token;
+}
+
+function readDropboxToken() {
+
+    var file = _fs2.default.readFileSync(process.env.HOME + '/.automatizacion-para-vagos/dropbox.json', "utf8");
     file = JSON.parse(file);
     return file.token;
 }
