@@ -26,9 +26,6 @@ Esta herramienta sirve para realizar algunas tareas básicas de github desde la 
 * ``` automatizacion-vagos -v ``` Muestra la versión
 * ``` automatizacion-vagos -h ``` Muestra la ayuda.
 
-
-## Ejemplo
-
 ## Autores
 
 1. [Aitor Bernal Falcón](http://chinegua.github.io/)
@@ -37,6 +34,5 @@ Esta herramienta sirve para realizar algunas tareas básicas de github desde la 
 
 ## Repositorio
 
-* [Repositorio de entrega]()
-
-## Enlaces de interés
+* [Repositorio de entrega](https://github.com/ULL-ESIT-SYTW-1617/proyecto-sytw-16-17-aitor-joshua-samuel)
+* [Enlace a NPM del paquete](https://www.npmjs.com/package/automatizacion-github-para-vagos)
