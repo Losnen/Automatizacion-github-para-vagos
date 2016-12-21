@@ -29,11 +29,11 @@ function subirFicheros(token) {
 
     return new Promise((resolve, reject) => {
 
-        if(!fs.existsSync('./README.pdf')) {
-          console.log(" ");
-          console.log("No existe el fichero README.pdf, generelo con el comando automatizacion-vagos -e");
-          console.log(" ");
-          process.exit(1);
+        if (!fs.existsSync('./README.pdf')) {
+            console.log(" ");
+            console.log("No existe el fichero README.pdf, generelo con el comando automatizacion-vagos -e");
+            console.log(" ");
+            process.exit(1);
         }
 
         let file = fs.readFileSync('./README.pdf');
@@ -61,15 +61,15 @@ function subirFicheros(token) {
 function createToken() {
 
     return new Promise((resolve, reject) => {
-      var questions = [{
-          type: 'input',
-          name: 'token',
-          message: 'Token de dropbox'
-      }];
+        var questions = [{
+            type: 'input',
+            name: 'token',
+            message: 'Token de dropbox'
+        }];
 
-      inquirer.prompt(questions).then((answers) => {
-          resolve(answers.token);
-      });
+        inquirer.prompt(questions).then((answers) => {
+            resolve(answers.token);
+        });
     });
 }
 
