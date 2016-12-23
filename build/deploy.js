@@ -39,7 +39,9 @@ var deploy = function () {
                             } else if (opcionp) {
                                 req.pushear();
                             } else {
-                                console.log();
+                                console.log("No ha añadido ninguna opción, introduca una de las siguientes: ");
+                                console.log("Ejecuta automatizacion-vagos -g -e para generar el README.pdf");
+                                console.log("Ejecuta automatizacion-vagos -g -p para subir el README.pdf a Dropbox");
                             }
                         } catch (err) {
                             console.log("Error al cargar la dependencia: " + plugin);
