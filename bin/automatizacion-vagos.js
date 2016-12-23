@@ -45,7 +45,7 @@ if (argv.i | argv.init) {
 
 } else if (argv.d) {
 
-    build.deploy();
+    build.deploy(argv.e,argv.p);
 
 } else if (argv.a) {
 

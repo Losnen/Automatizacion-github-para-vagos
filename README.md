@@ -39,4 +39,6 @@ Esta herramienta sirve para realizar algunas tareas básicas de github desde la 
 ## Repositorio
 
 * [Repositorio de entrega](https://github.com/ULL-ESIT-SYTW-1617/proyecto-sytw-16-17-aitor-joshua-samuel)
+* [Repositorio de entrega del plugin]()
 * [Enlace a NPM del paquete](https://www.npmjs.com/package/automatizacion-github-para-vagos)
+* [Enlace a NPM del paquete](https://www.npmjs.com/package/subir-nube-vagos)

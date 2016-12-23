@@ -20,7 +20,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 var deploy = function () {
-    var _ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee(repo) {
+    var _ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee(opcione, opcionp) {
         var plugin, dirPlugin, req;
         return regeneratorRuntime.wrap(function _callee$(_context) {
             while (1) {
@@ -33,9 +33,17 @@ var deploy = function () {
                             dirPlugin = _path2.default.resolve(process.cwd(), 'node_modules', plugin);
                             req = require(dirPlugin);
 
-                            req.generar();
+
+                            if (opcione) {
+                                req.generar();
+                            } else if (opcionp) {
+                                req.pushear();
+                            } else {
+                                console.log();
+                            }
                         } catch (err) {
-                            console.log("Error al cargar la dependencia: " + plugin + "Ejecute npm i -S subir-nube-vagos");
+                            console.log("Error al cargar la dependencia: " + plugin);
+                            console.log("Ejecute npm i -S subir-nube-vagos para instalar el plugin");
                         }
 
                     case 2:
@@ -46,7 +54,7 @@ var deploy = function () {
         }, _callee, undefined);
     }));
 
-    return function deploy(_x) {
+    return function deploy(_x, _x2) {
         return _ref.apply(this, arguments);
     };
 }();
