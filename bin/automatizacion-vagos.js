@@ -47,10 +47,6 @@ if (argv.i | argv.init) {
 
     build.deploy();
 
-} else if (argv.e) {
-
-    build.convert();
-
 } else if (argv.a) {
 
     let commit = argv.a + " ";

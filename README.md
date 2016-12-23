@@ -19,12 +19,16 @@ Esta herramienta sirve para realizar algunas tareas básicas de github desde la 
 * ``` automatizacion-vagos -m [mi-repo] ``` Muestra las ramas y hace la comparacion entre dos ramas de *mi-repo*
 * ``` automatizacion-vagos -f [user/repo] ``` Hace un fork del repositorio *user/repo*
 * ``` automatizacion-vagos -u [user] ``` Muestra la info del usuario  *user*
-* ``` automatizacion-vagos -e ``` Genera un documento pdf a partir del README.md (Se necesita ejecutar ```npm i -S markdown-pdf remarkable-classy ```)
-* ``` automatizacion-vagos -d ``` Sube el documento pdf a dropbox (Se necesita ejecutar ```npm i -S dropbox```)
 * ``` automatizacion-vagos -o  ``` Muestra las organizaciones a las que pertenece el usuario
 * ``` automatizacion-vagos -a [commit] ``` Ejecuta git add, git commit y git push en un solo paso
 * ``` automatizacion-vagos -v ``` Muestra la versión
 * ``` automatizacion-vagos -h ``` Muestra la ayuda.
+
+## Opciones del plugin para generar el PDF y subirlo a dropbox
+
+* Ejecutar ```npm i -S subir-nube-vagos```
+* ``` automatizacion-vagos -d -e ``` Genera un documento pdf a partir del README.md
+* ``` automatizacion-vagos -d -p``` Sube el documento pdf a dropbox
 
 ## Autores
 
